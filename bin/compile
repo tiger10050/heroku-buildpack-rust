@@ -11,7 +11,7 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 VERSION=stable
 MAKE_FILE_PATH=""
 MAKE_TASK="build-perf"
-RESULTING_BIN_PATH=""
+RESULTING_PACKAGE_PATH=""
 
 # Load our configuration variables, if any were specified.
 if [ -f "$BUILD_DIR/HerokuConfig" ]; then
@@ -89,4 +89,4 @@ cd "$BUILD_DIR"
 rm -rf target/
 cargo make --makefile ${MAKE_FILE_PATH} ${MAKE_TASK}
 mkdir -p target/release
-cp ${BUILD_DIR}/${RESULTING_BIN_PATH} target/release
+cp -r ${BUILD_DIR}/${RESULTING_PACKAGE_PATH}/* target/release/
