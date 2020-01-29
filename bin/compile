@@ -89,4 +89,8 @@ cd "$BUILD_DIR"
 rm -rf target/
 cargo make --makefile ${MAKE_FILE_PATH} ${MAKE_TASK}
 mkdir -p target/release
+echo "Build dir:"
+ls -l ${BUILD_DIR}
+echo "Resulting path:"
+ls -l ${BUILD_DIR}/${RESULTING_PACKAGE_PATH}/
 cp -r ${BUILD_DIR}/${RESULTING_PACKAGE_PATH}/* target/release/
