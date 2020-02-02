@@ -10,7 +10,8 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 # Can be overriden in HerokuConfig
 VERSION=stable
 MAKE_FILE_PATH=""
-MAKE_TASK="build-perf"
+MAKE_TASK="build"
+MAKE_FILE_OPTIONS=""
 RESULTING_PACKAGE_PATH=""
 
 # Load our configuration variables, if any were specified.
@@ -87,7 +88,7 @@ export CARGO_TARGET_DIR="$CACHE_DIR/target"
 echo "-----> Building application using Cargo"
 cd "$BUILD_DIR"
 rm -rf target/
-cargo make --makefile ${MAKE_FILE_PATH} ${MAKE_TASK}
+cargo make --makefile ${MAKE_FILE_PATH} ${MAKE_TASK} ${MAKE_FILE_OPTIONS}
 mkdir -p target/release
 echo "Build dir:"
 ls -l ${BUILD_DIR}
